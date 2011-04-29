@@ -114,17 +114,18 @@ module PREFIX(PORTS);
    initial
      begin       
         #100;
-        axi_master.ahb_bursts=1;
+        ahb_bursts=1;
      end
    
    
 CREATE axi_master.v \\
+   DEFCMD(SWAP.GLOBAL CONST(PREFIX) PREFIX_axi_master) \\
    DEFCMD(SWAP.GLOBAL CONST(ID_BITS) ID_BITS) \\
    DEFCMD(SWAP.GLOBAL CONST(ADDR_BITS) ADDR_BITS) \\
    DEFCMD(SWAP.GLOBAL CONST(DATA_BITS) DATA_BITS) \\
    DEFCMD(SWAP.GLOBAL CONST(ID_NUM) 1)  \\
    DEFCMD(SWAP.GLOBAL CONST(ID0_VAL) ID_BITS'b0) 
-   axi_master axi_master(
+   PREFIX_axi_master axi_master(
 			 .clk(clk),
 			 .reset(reset),
 
@@ -135,12 +136,12 @@ CREATE axi_master.v \\
 
    
    CREATE axi2ahb.v \\
-   DEFCMD(SWAP.GLOBAL CONST(PREFIX) ahbm) \\
+   DEFCMD(SWAP.GLOBAL CONST(PREFIX) PREFIX) \\
    DEFCMD(SWAP.GLOBAL CONST(CMD_DEPTH) 4) \\
    DEFCMD(SWAP.GLOBAL CONST(ADDR_BITS) ADDR_BITS) \\
    DEFCMD(SWAP.GLOBAL CONST(DATA_BITS) DATA_BITS) \\
    DEFCMD(SWAP.GLOBAL CONST(ID_BITS) ID_BITS) 
-     ahbm_axi2ahb ahbm_axi2ahb(
+     PREFIX_axi2ahb axi2ahb(
 			 .clk(clk),
 			 .reset(reset),
 
