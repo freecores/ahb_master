@@ -37,6 +37,7 @@ module PREFIX_single(PORTS);
    parameter                           MASTER_ID   = 0;
    parameter                           MASTER_PEND = 0;
    
+CREATE prgen_rand.v DEFCMD(DEFINE NOT_IN_LIST)
 `include "prgen_rand.v"
    
    parameter                           MAX_CMDS    = 16; //Depth of command FIFO
