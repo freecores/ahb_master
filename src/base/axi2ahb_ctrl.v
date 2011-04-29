@@ -44,6 +44,7 @@ module  PREFIX_axi2ahb_ctrl (PORTS);
    reg [4:0]              cmd_counter;
    reg                    rdata_phase;
    reg                    wdata_phase;
+   wire                   data_phase;
    reg [1:0]              HTRANS;
    reg [2:0]              HBURST;
    reg [1:0]              HSIZE;
@@ -54,11 +55,12 @@ module  PREFIX_axi2ahb_ctrl (PORTS);
    assign                 ahb_finish   = ahb_ack_last;
    
    assign                 data_ready   = cmd_read ? rdata_ready : wdata_ready;
+   assign                 data_phase   = wdata_phase | rdata_phase;
    
    assign                 ahb_idle     = HTRANS == TRANS_IDLE;
    assign                 ahb_ack      = HTRANS[1] & HREADY;
    assign                 ahb_ack_last = ahb_last & ahb_ack;
-   assign                 ahb_start    = (~cmd_empty) & data_ready & ahb_idle;
+   assign                 ahb_start    = (~cmd_empty) & data_ready & ahb_idle & (HREADY | (~data_phase));
    assign                 data_last    = HREADY & (ahb_idle || (HTRANS == TRANS_NONSEQ));
    
    always @(posedge clk or posedge reset)
