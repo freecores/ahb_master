@@ -2,12 +2,14 @@
 INCLUDE   def_axi_master_rand.txt
 INCLUDE   def_axi2ahb.txt
 
-SWAP.GLOBAL #FFD      #1              ## flip-flop delay
+SWAP      MODEL_NAME  AHB master stub
 
-SWAP      PREFIX      ahb_master      ## prefix for all modules and file names
+SWAP.GLOBAL #FFD        #1              ## flip-flop delay
 
-SWAP      ADDR_BITS   24              ## AXI and AHB address bits
-SWAP      DATA_BITS   32              ## AXI and AHB data bits
+SWAP.USER   PREFIX      ahb_master      ## Prefix for all modules and file names
 
-SWAP      SIZE_BITS   2
+SWAP.USER   ADDR_BITS   24              ## AHB address bits
+SWAP.USER   DATA_BITS   32              ## AHB data bits
+
+SWAP        SIZE_BITS   2
   
