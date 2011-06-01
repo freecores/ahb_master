@@ -36,7 +36,7 @@ CHECK CONST(ADDR_BITS)
 CHECK CONST(DATA_BITS)
 CHECK CONST(ID_BITS)
 CHECK CONST(CMD_DEPTH)
-  
+
 module  PREFIX_axi2ahb (PORTS);
 
    input              clk;
