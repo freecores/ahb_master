@@ -28,10 +28,15 @@
 //////////////////////////////////////////////////////////////////##>
 
 OUTFILE PREFIX_ic.v
-INCLUDE def_ic.txt 
-ITER MX
+INCLUDE def_ic.txt
 
+ITER MX
 ITER SX SLAVE_NUM ##external slave ports don't include decerr slave
+
+VERIFY (GROUP_MMX_ID.NUM > 0) ##Master MX does not have group for AXI IDs
+  
+VERIFY(UNIQUE(GONCAT(GROUP_MMX_ID ,))) ##Master MX IDs are not unique
+
 
 module  PREFIX_ic (PORTS); 
 
@@ -98,8 +103,8 @@ ITER SX ##use global iterator
 		    .MMX_AWGROUP_IC_AXI_CMD(MMX_AWGROUP_IC_AXI_CMD),
 		    .MMX_WGROUP_IC_AXI_W(MMX_WGROUP_IC_AXI_W),
 		    .SSX_WGROUP_IC_AXI_W(SSX_WGROUP_IC_AXI_W),
-    		.SSX_AWVALID(SSX_AWVALID),
-    		.SSX_AWREADY(SSX_AWREADY),
+    		    .SSX_AWVALID(SSX_AWVALID),
+    		    .SSX_AWREADY(SSX_AWREADY),
 		    .SSX_AWMSTR(SSX_AWMSTR),
 		    STOMP ,
 		    );

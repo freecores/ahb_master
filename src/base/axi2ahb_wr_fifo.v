@@ -28,9 +28,9 @@
 /////////////////////////////////////////////////////////////////////
 
 INCLUDE def_axi2ahb.txt
-OUTFILE PREFIX_axi2ahb_wr_fifo.v
+OUTFILE PREFIX_wr_fifo.v
 
-module  PREFIX_axi2ahb_wr_fifo (PORTS);
+module  PREFIX_wr_fifo (PORTS);
 
    parameter              FIFO_LINES = EXPR(2 * 16); //double buffer of max burst
    parameter              RESP_SLVERR = 2'b10;

@@ -28,9 +28,9 @@
 /////////////////////////////////////////////////////////////////////
 
 INCLUDE def_axi2ahb.txt
-OUTFILE PREFIX_axi2ahb_ctrl.v
+OUTFILE PREFIX_ctrl.v
 
-module  PREFIX_axi2ahb_ctrl (PORTS);
+module  PREFIX_ctrl (PORTS);
 
 
    input                  clk;

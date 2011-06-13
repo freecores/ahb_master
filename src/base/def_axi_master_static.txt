@@ -27,10 +27,10 @@
 ////                                                             ////
 //////////////////////////////////////////////////////////////////##>
 
-INCLUDE def_axi_master_rand.txt
-  
-VERIFY (DATA_BITS <= 64) else stub supports 32 or 64 bits data bus
-VERIFY (SIZE_BITS <= 3) else stub supports 32 or 64 bits data bus
+SWAP.GLOBAL MODEL_NAME AXI master stub
+
+VERIFY (DATA_BITS <= 64) ##stub supports 32 or 64 bits data bus
+VERIFY (SIZE_BITS <= 3) ##stub supports 32 or 64 bits data bus
 
 GROUP STUB_AXI_A is {
     ID       ID_BITS                output
@@ -77,3 +77,18 @@ GROUP STUB_AXI joins {
     GROUP STUB_AXI_A prefix_AR
     GROUP STUB_AXI_R prefix_R
 }
+
+GROUP AXI_MASTER_RAND is {
+   ahb_bursts   SON(DEFAULT 0)
+   use_addr_base   SON(DEFAULT 0)
+   len_min     SON(DEFAULT 0)
+   len_max     SON(DEFAULT 15)
+   size_min    SON(DEFAULT 0)
+   size_max    SON(DEFAULT 3)
+   addr_min    SON(DEFAULT 0)
+   addr_max    SON(DEFAULT {DATA_BITS{1'b1}})
+}
+
+SWAP ID_NUM GROUP_AXI_ID.NUM
+  
+  

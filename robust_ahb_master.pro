@@ -1,4 +1,4 @@
-##RobustVerilog project 
+PROJDIR = run 
 
 SRCFILE = ahb_master.v
 DEFFILE =
