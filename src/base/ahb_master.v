@@ -152,7 +152,7 @@ CREATE axi_master.v \\
    DEFCMD(SWAP.GLOBAL CONST(ADDR_BITS) ADDR_BITS) \\
    DEFCMD(SWAP.GLOBAL CONST(DATA_BITS) DATA_BITS) \\
    DEFCMD(GROUP.USER AXI_ID overrides {)  \\
-   DEFCMD(b0) \\ 
+   DEFCMD(0) \\ 
    DEFCMD(})
    PREFIX_axi_master axi_master(
 			 .clk(clk),
