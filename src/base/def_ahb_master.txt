@@ -31,7 +31,9 @@ REQUIRE(1.4)
 
 INCLUDE   def_axi_master_rand.txt
 INCLUDE   def_axi2ahb.txt
-
+  
+STARTUSER
+  
 SWAP.GLOBAL MODEL_NAME  AHB master stub
 
 SWAP.GLOBAL #FFD        #1              ## flip-flop delay
