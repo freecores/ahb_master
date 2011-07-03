@@ -26,9 +26,9 @@
 //// details. http://www.gnu.org/licenses/lgpl.html              ////
 ////                                                             ////
 //////////////////////////////////////////////////////////////////##>
+REQUIRE(1.5)
 
-REQUIRE(1.4)
-
+ENDUSER
 INCLUDE   def_axi_master_rand.txt
 INCLUDE   def_axi2ahb.txt
   
